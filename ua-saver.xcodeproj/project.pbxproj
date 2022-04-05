@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		ED2A13E327FCC5CE0015CDAB /* saverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A13E227FCC5CE0015CDAB /* saverView.swift */; };
+		ED2A13E827FCDBBB0015CDAB /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A13E627FCDBBB0015CDAB /* thumbnail@2x.png */; };
+		ED2A13E927FCDBBB0015CDAB /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A13E727FCDBBB0015CDAB /* thumbnail.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED2A13D227FCC3750015CDAB /* ua-saver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ua-saver.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A13E227FCC5CE0015CDAB /* saverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saverView.swift; sourceTree = "<group>"; };
+		ED2A13E627FCDBBB0015CDAB /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
+		ED2A13E727FCDBBB0015CDAB /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,9 +49,19 @@
 		ED2A13D427FCC3750015CDAB /* ua-saver */ = {
 			isa = PBXGroup;
 			children = (
+				ED2A13E527FCDBA20015CDAB /* Resources */,
 				ED2A13E227FCC5CE0015CDAB /* saverView.swift */,
 			);
 			path = "ua-saver";
+			sourceTree = "<group>";
+		};
+		ED2A13E527FCDBA20015CDAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED2A13E727FCDBBB0015CDAB /* thumbnail.png */,
+				ED2A13E627FCDBBB0015CDAB /* thumbnail@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
