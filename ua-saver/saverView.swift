@@ -7,13 +7,16 @@
 
 import ScreenSaver
 
-class saverView: ScreenSaverView {
-    
-    private var iter = 0;
+class SaverView: ScreenSaverView {
+    private var iter: UInt32 = 0
+    private var screenWidth: CGFloat = 0
+    private var halfScreenHeight: CGFloat = 0
 
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
+        screenWidth = frame.width
+        halfScreenHeight = frame.height / 2
     }
 
     @available(*, unavailable)
@@ -23,11 +26,11 @@ class saverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        switch iter % 2 == 0{
+        switch iter % 2 == 0 {
         case true:
-            drawBackground(.white)
+            drawBackground(with: .yellow, with: .blue)
         case false:
-            drawBackground(.red)
+            drawBackground(with: .blue, with: .yellow)
         }
     }
 
@@ -39,10 +42,15 @@ class saverView: ScreenSaverView {
     }
 
     // MARK: - Helper Functions
-    private func drawBackground(_ color: NSColor) {
-        let background = NSBezierPath(rect: bounds)
-        color.setFill()
-        background.fill()
+    private func drawBackground(with fColor: NSColor, with sColor: NSColor) {
+        let topHalf = NSRect(x: 0, y: 0, width: screenWidth, height: halfScreenHeight)
+        let bottomHalf = NSRect(x: 0, y: halfScreenHeight, width: screenWidth, height: halfScreenHeight)
+        var screen = NSBezierPath(rect: topHalf)
+        fColor.setFill()
+        screen.fill()
+        screen = NSBezierPath(rect: bottomHalf)
+        sColor.setFill()
+        screen.fill()
         iter += 1
     }
 }
