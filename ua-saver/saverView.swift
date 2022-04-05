@@ -8,6 +8,8 @@
 import ScreenSaver
 
 class saverView: ScreenSaverView {
+    
+    private var iter = 0;
 
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
@@ -21,11 +23,17 @@ class saverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        drawBackground(.white)
+        switch iter % 2 == 0{
+        case true:
+            drawBackground(.white)
+        case false:
+            drawBackground(.red)
+        }
     }
 
     override func animateOneFrame() {
         super.animateOneFrame()
+        sleep(1)
 
         setNeedsDisplay(bounds)
     }
@@ -35,5 +43,6 @@ class saverView: ScreenSaverView {
         let background = NSBezierPath(rect: bounds)
         color.setFill()
         background.fill()
+        iter += 1
     }
 }
