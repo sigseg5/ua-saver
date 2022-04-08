@@ -26,31 +26,32 @@ class SaverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        switch iter % 2 == 0 {
-        case true:
-            drawBackground(with: .yellow, with: .blue)
-        case false:
-            drawBackground(with: .blue, with: .yellow)
-        }
+//        for opacity in stride(from: 0.1, through: 1.0, by: 0.1) {
+//        }
+        drawTopPart(with: .yellow, opacity: 1.0)
+        drawBottomPart(with: .blue, opacity: 1.0)
     }
 
     override func animateOneFrame() {
-        super.animateOneFrame()
-        sleep(1)
-
+        super.startAnimation()
         setNeedsDisplay(bounds)
     }
 
     // MARK: - Helper Functions
-    private func drawBackground(with fColor: NSColor, with sColor: NSColor) {
+    private func drawBottomPart(with color: NSColor, opacity: CGFloat) {
+            let bottomHalf = NSRect(x: 0, y: halfScreenHeight, width: screenWidth, height: halfScreenHeight)
+        let screen = NSBezierPath(rect: bottomHalf)
+            color
+            .withAlphaComponent(opacity)
+                .setFill()
+            screen.fill()
+    }
+    private func drawTopPart(with color: NSColor, opacity: CGFloat) {
         let topHalf = NSRect(x: 0, y: 0, width: screenWidth, height: halfScreenHeight)
-        let bottomHalf = NSRect(x: 0, y: halfScreenHeight, width: screenWidth, height: halfScreenHeight)
-        var screen = NSBezierPath(rect: topHalf)
-        fColor.setFill()
+        let screen = NSBezierPath(rect: topHalf)
+        color
+            .withAlphaComponent(opacity)
+            .setFill()
         screen.fill()
-        screen = NSBezierPath(rect: bottomHalf)
-        sColor.setFill()
-        screen.fill()
-        iter += 1
     }
 }
