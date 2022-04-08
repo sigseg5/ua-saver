@@ -27,7 +27,6 @@ class SaverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        drawBackground(.black)
         drawTopPart(with: .yellow, opacity: opacity)
         drawBottomPart(with: .blue, opacity: opacity)
     }
@@ -56,10 +55,5 @@ class SaverView: ScreenSaverView {
             .withAlphaComponent(opacity)
             .setFill()
         screen.fill()
-    }
-    private func drawBackground(_ color: NSColor) {
-        let background = NSBezierPath(rect: bounds)
-        color.setFill()
-        background.fill()
     }
 }
