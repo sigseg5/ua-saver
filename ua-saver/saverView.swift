@@ -26,8 +26,6 @@ class SaverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-//        for opacity in stride(from: 0.1, through: 1.0, by: 0.1) {
-//        }
         drawTopPart(with: .yellow, opacity: 1.0)
         drawBottomPart(with: .blue, opacity: 1.0)
     }
@@ -39,12 +37,12 @@ class SaverView: ScreenSaverView {
 
     // MARK: - Helper Functions
     private func drawBottomPart(with color: NSColor, opacity: CGFloat) {
-            let bottomHalf = NSRect(x: 0, y: halfScreenHeight, width: screenWidth, height: halfScreenHeight)
+        let bottomHalf = NSRect(x: 0, y: halfScreenHeight, width: screenWidth, height: halfScreenHeight)
         let screen = NSBezierPath(rect: bottomHalf)
-            color
+        color
             .withAlphaComponent(opacity)
-                .setFill()
-            screen.fill()
+            .setFill()
+        screen.fill()
     }
     private func drawTopPart(with color: NSColor, opacity: CGFloat) {
         let topHalf = NSRect(x: 0, y: 0, width: screenWidth, height: halfScreenHeight)
