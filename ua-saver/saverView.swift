@@ -8,9 +8,10 @@
 import ScreenSaver
 
 class SaverView: ScreenSaverView {
-    private var iter: UInt32 = 0
-    private var screenWidth: CGFloat = 0
-    private var halfScreenHeight: CGFloat = 0
+    private let delay = 0.000008
+    private var opacity = 0.0
+    private var screenWidth: CGFloat = 0.0
+    private var halfScreenHeight: CGFloat = 0.0
 
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
@@ -26,12 +27,16 @@ class SaverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        drawTopPart(with: .yellow, opacity: 1.0)
-        drawBottomPart(with: .blue, opacity: 1.0)
+        drawBackground(.black)
+        drawTopPart(with: .yellow, opacity: opacity)
+        drawBottomPart(with: .blue, opacity: opacity)
     }
 
     override func animateOneFrame() {
         super.startAnimation()
+        if opacity <= 1.0 {
+            opacity += delay
+        }
         setNeedsDisplay(bounds)
     }
 
@@ -51,5 +56,10 @@ class SaverView: ScreenSaverView {
             .withAlphaComponent(opacity)
             .setFill()
         screen.fill()
+    }
+    private func drawBackground(_ color: NSColor) {
+        let background = NSBezierPath(rect: bounds)
+        color.setFill()
+        background.fill()
     }
 }
